@@ -2,3 +2,13 @@
 /Pokemon-Fun/obj/*
 /Pokenmon-Api/obj/*
 /.vs/Pokemon-Fun/v16/.suo
+/Pokemon-Api.Test/bin/*
+/.vs/*
+/Pokemon-Api.Test/obj/*
+/Pokemon-Api/bin/*
+/Pokemon-Api/obj/*
+/Pokemon-Common/obj/*
+/Pokemon-Data/obj/*
+/Pokemon-Web/bin/*
+/Pokemon-Web/obj/*
+/Pokemon-Web/node_modules*

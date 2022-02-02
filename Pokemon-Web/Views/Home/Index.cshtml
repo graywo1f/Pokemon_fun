@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+   Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ActionLink("Details", "Details", "Home", new { id =1 })
+<div id="app">
+
+    <home-component></home-component>
+</div>
+
+@section scripts {
+    <script src="@Url.Content("~/bundle/home.js")"></script>
+}

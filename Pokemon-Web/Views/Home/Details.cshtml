@@ -1,0 +1,11 @@
+﻿@model int
+
+@{ ViewData["Title"] = "Details Page"; }
+
+<div id="app">
+    <Details-component :pokemon="'@((int)Model)'"></Details-component>
+</div>
+
+@section scripts {
+    <script src="@Url.Content("~/bundle/home.js")"></script>
+}
