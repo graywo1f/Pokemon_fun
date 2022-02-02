@@ -26,14 +26,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <!--<nav aria-label="..." v-if="allPages > 1">
-                    <ul class="pagination">
-                        <li class="page-item" v-for="(page, index) in allPages" :key="index">
-                            <a class="page-link" v-if="!IsCurrentPage(index)" v-on:click="changePage(index + 1)">{{ index+1 }}</a>
-                            <a class="page-link" v-if="IsCurrentPage(index)" v-on:click="changePage(index + 1)">{{ index+1 }}</a>
-                        </li>
-                    </ul>
-                </nav>-->
+                <nav>
+                    <a class="page-link" href="#" v-on:click="changePageprv()">Previews</a>
+                    <a class="page-link" href="#" v-on:click="changePageNext()">Next</a>
+                </nav>
             </div>
        
     </div>
@@ -47,11 +43,10 @@
      data() {
             return {
                 Pokemons: [],
-               
-                currentPage: 1,
-                allPages: 1,
+              
                 totalItems: 0,
-                
+                offsetNext: 0,
+                offsetPreviews:0,
                 loading: true,
                
 
@@ -60,37 +55,28 @@
        
        
         methods: {
-            //getPropValue: function ($this, fieldName) {
-            //    if ($this.hasOwnProperty(fieldName)) {
-            //        if (Array.isArray($this[fieldName])) {
-            //            return $this[fieldName].join(" , ");
-            //        }
-            //        else {
-            //            return $this[fieldName];
-            //        }
-            //    }
-            //    return
-            //},
-            IsCurrentPage(index) {
-                if (index == this.currentPage)
-                    return true;
-                else return false;
+           
+           
+            changePageNext() {
+
+                this.UpdateData(this.offsetNext);
             },
-            changePage(page) {
-                this.currentPage = page;
-                this.UpdateData();
+            changePageprv() {
 
-            },           
+                this.UpdateData(this.offsetPreviews);
+            },
            
            
-            UpdateData() {
-                this.loading = true;
-
-                axios.get('/API/Pokemon')
+            UpdateData(offest) {
+                if (offest === undefined) {
+                    offest = 0;
+                }
+                axios.get('/API/Pokemon?id=' + offest)
                     .then(response => {
 
                         this.Pokemons = response.data.responce.results;
-                        //this.allPages = response.data.table.totalPages;
+                        this.offsetNext = response.data.responce.offsetForNext;
+                        this.offsetPreviews = response.data.responce.offsetForPreview;
                         this.totalItems = response.data.responce.count;
                         //this.currentPage = response.data.table.currentPage;
 
@@ -104,7 +90,7 @@
 
         },
         created() {
-            this.UpdateData();
+            this.UpdateData(0);
 
         },
       

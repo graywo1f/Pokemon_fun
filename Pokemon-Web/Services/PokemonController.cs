@@ -23,14 +23,13 @@ namespace Pokemon_Web.Controllers
             _logger = logger;
         }
         [HttpGet]
-        public JsonResult Get()
+        public JsonResult Get(int id = 0)
         {
-
             GenericResponce<NamedApiResourceList<Pokemon>> result = new GenericResponce<NamedApiResourceList<Pokemon>>();
             try
             {
                 PokeApiClient client = new PokeApiClient(_logger);
-                var task = client.GetNamedResourcePageAsync<Pokemon>(40);
+                var task = client.GetNamedResourcePageAsync<Pokemon>(20, id);
                 task.Wait();
                 result.Responce = task.Result;
                 result.ResponceOK = true;

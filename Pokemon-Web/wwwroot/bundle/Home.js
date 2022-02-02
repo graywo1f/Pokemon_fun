@@ -13584,10 +13584,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -13596,11 +13592,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  data() {
         return {
             Pokemons: [],
-           
-            currentPage: 1,
-            allPages: 1,
+          
             totalItems: 0,
-            
+            offsetNext: 0,
+            offsetPreviews:0,
             loading: true,
            
 
@@ -13609,37 +13604,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
    
    
     methods: {
-        //getPropValue: function ($this, fieldName) {
-        //    if ($this.hasOwnProperty(fieldName)) {
-        //        if (Array.isArray($this[fieldName])) {
-        //            return $this[fieldName].join(" , ");
-        //        }
-        //        else {
-        //            return $this[fieldName];
-        //        }
-        //    }
-        //    return
-        //},
-        IsCurrentPage(index) {
-            if (index == this.currentPage)
-                return true;
-            else return false;
+       
+       
+        changePageNext() {
+
+            this.UpdateData(this.offsetNext);
         },
-        changePage(page) {
-            this.currentPage = page;
-            this.UpdateData();
+        changePageprv() {
 
-        },           
+            this.UpdateData(this.offsetPreviews);
+        },
        
        
-        UpdateData() {
-            this.loading = true;
-
-            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/API/Pokemon')
+        UpdateData(offest) {
+            if (offest === undefined) {
+                offest = 0;
+            }
+            __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/API/Pokemon?id=' + offest)
                 .then(response => {
 
                     this.Pokemons = response.data.responce.results;
-                    //this.allPages = response.data.table.totalPages;
+                    this.offsetNext = response.data.responce.offsetForNext;
+                    this.offsetPreviews = response.data.responce.offsetForPreview;
                     this.totalItems = response.data.responce.count;
                     //this.currentPage = response.data.table.currentPage;
 
@@ -13653,7 +13639,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     },
     created() {
-        this.UpdateData();
+        this.UpdateData(0);
 
     },
   
@@ -14480,7 +14466,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "href": '/Home/Details/' + pokemon.id
       }
     }, [_vm._v("\n                            " + _vm._s(pokemon.name) + "\n                            ")])])])
-  }), 0)])])])
+  }), 0)]), _vm._v(" "), _c('nav', [_c('a', {
+    staticClass: "page-link",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changePageprv()
+      }
+    }
+  }, [_vm._v("Previews")]), _vm._v(" "), _c('a', {
+    staticClass: "page-link",
+    attrs: {
+      "href": "#"
+    },
+    on: {
+      "click": function($event) {
+        return _vm.changePageNext()
+      }
+    }
+  }, [_vm._v("Next")])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("\n                           Name\n                        ")]), _vm._v(" "), _c('th', [_vm._v("\n                          Operation\n                        ")])])])
 }]}
