@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿// Unobtrusive validation support library for jQuery and jQuery Validate
+=======
+// Unobtrusive validation support library for jQuery and jQuery Validate
+>>>>>>> 3cf976ac69cf8d05f0334e9b0253068ef6e28254
 // Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 // @version v3.2.11

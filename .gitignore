@@ -2,6 +2,7 @@
 /Pokemon-Fun/obj/*
 /Pokenmon-Api/obj/*
 /.vs/Pokemon-Fun/v16/.suo
+<<<<<<< HEAD
 /Pokemon-Api.Test/bin/*
 /.vs/*
 /Pokemon-Api.Test/obj/*
@@ -12,3 +13,10 @@
 /Pokemon-Web/bin/*
 /Pokemon-Web/obj/*
 /Pokemon-Web/node_modules*
+=======
+/Pokemon-Api/obj/*
+/.vs/Pokemon-Fun/DesignTimeBuild/.dtbcache.v2
+/Pokemon-Common/obj/*
+/Pokemon-Data/obj/*
+/Pokemon-Web/obj/*
+>>>>>>> 3cf976ac69cf8d05f0334e9b0253068ef6e28254

@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Client\" />
     <Folder Include="Contracts\" />
     <Folder Include="Responce\" />
+=======
+    <Folder Include="Contracts\" />
+>>>>>>> 3cf976ac69cf8d05f0334e9b0253068ef6e28254
   </ItemGroup>
 
   <ItemGroup>

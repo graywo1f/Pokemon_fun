@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿Copyright jQuery Foundation and other contributors, https://jquery.org/
+=======
+Copyright JS Foundation and other contributors, https://js.foundation/
+>>>>>>> 3cf976ac69cf8d05f0334e9b0253068ef6e28254
 
 This software consists of voluntary contributions made by many
 individuals. For exact contribution history, see the revision history

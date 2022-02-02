@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PokeApiNet;
+using Pokemon_Api;
 using Pokemon_Api.Models;
 using System;
 using System.Collections.Generic;

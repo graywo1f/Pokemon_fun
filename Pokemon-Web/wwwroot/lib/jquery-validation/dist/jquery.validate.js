@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿/*!
+=======
+/*!
+>>>>>>> 3cf976ac69cf8d05f0334e9b0253068ef6e28254
  * jQuery Validation Plugin v1.17.0
  *
  * https://jqueryvalidation.org/

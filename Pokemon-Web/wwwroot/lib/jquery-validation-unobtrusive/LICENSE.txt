@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿Copyright (c) .NET Foundation. All rights reserved.
+=======
+Copyright (c) .NET Foundation. All rights reserved.
+>>>>>>> 3cf976ac69cf8d05f0334e9b0253068ef6e28254
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 these files except in compliance with the License. You may obtain a copy of the

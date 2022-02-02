@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PokeApiNet
+namespace Pokemon_Api
 {
     /// <summary>
     /// Gets data from the PokeAPI service
