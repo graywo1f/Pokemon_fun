@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+using Moq;
 using Pokemon_Api.Models;
 using System;
 using System.Collections.Generic;
@@ -18,8 +20,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetBerryResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Berry berry = await client.GetResourceAsync<Berry>(1);
@@ -32,8 +35,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetBerryFirmnessResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 BerryFirmness berryFirmness = await client.GetResourceAsync<BerryFirmness>(1);
@@ -46,8 +50,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetBerryFlavorResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 BerryFlavor berryFlavor = await client.GetResourceAsync<BerryFlavor>(1);
@@ -60,8 +65,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetLanguageResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Language language = await client.GetResourceAsync<Language>(1);
@@ -74,8 +80,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetContestTypeResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ContestType contestType = await client.GetResourceAsync<ContestType>(1);
@@ -88,8 +95,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetContestEffectResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ContestEffect contestEffect = await client.GetResourceAsync<ContestEffect>(1);
@@ -102,8 +110,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetSuperContestEffectResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 SuperContestEffect superContestEffect = await client.GetResourceAsync<SuperContestEffect>(1);
@@ -116,8 +125,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEncounterMethodResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 EncounterMethod evolutionMethod = await client.GetResourceAsync<EncounterMethod>(1);
@@ -130,8 +140,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEncounterConditionResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 EncounterCondition encounterCondition = await client.GetResourceAsync<EncounterCondition>(1);
@@ -144,8 +155,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEncounterConditionValueResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 EncounterConditionValue encounterConditionValue = await client.GetResourceAsync<EncounterConditionValue>(1);
@@ -158,8 +170,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEvolutionChainResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 EvolutionChain evolutionChain = await client.GetResourceAsync<EvolutionChain>(1);
@@ -172,8 +185,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEvolutionTriggerResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 EvolutionTrigger evolutionTrigger = await client.GetResourceAsync<EvolutionTrigger>(1);
@@ -186,8 +200,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetGenerationResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Generation generation = await client.GetResourceAsync<Generation>(1);
@@ -200,8 +215,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokedexResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Pokedex pokedex = await client.GetResourceAsync<Pokedex>(1);
@@ -214,8 +230,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetVersionResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Models.Version version = await client.GetResourceAsync<Models.Version>(1);
@@ -228,8 +245,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetVersionGroupResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 VersionGroup versionGroup = await client.GetResourceAsync<VersionGroup>(1);
@@ -242,8 +260,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Item item = await client.GetResourceAsync<Item>(1);
@@ -256,8 +275,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemAttributeResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ItemAttribute itemAttribute = await client.GetResourceAsync<ItemAttribute>(1);
@@ -270,8 +290,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemCategoryResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ItemCategory itemCategory = await client.GetResourceAsync<ItemCategory>(1);
@@ -284,8 +305,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemFlingEffectResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ItemFlingEffect itemFlingEffect = await client.GetResourceAsync<ItemFlingEffect>(1);
@@ -298,8 +320,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemPocketResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ItemPocket itemPocket = await client.GetResourceAsync<ItemPocket>(1);
@@ -312,8 +335,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetLocationResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Location location = await client.GetResourceAsync<Location>(1);
@@ -326,8 +350,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetLocationAreaResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 LocationArea locationArea = await client.GetResourceAsync<LocationArea>(1);
@@ -340,8 +365,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPalParkAreaResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 PalParkArea palParkArea = await client.GetResourceAsync<PalParkArea>(1);
@@ -354,8 +380,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetRegionResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Region region = await client.GetResourceAsync<Region>(1);
@@ -368,8 +395,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMachineResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Machine machine = await client.GetResourceAsync<Machine>(1);
@@ -384,8 +412,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveResourceAsyncIntegrationTest(int id)
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Move move = await client.GetResourceAsync<Move>(id);
@@ -398,8 +427,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveAilmentResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 MoveAilment moveAilment = await client.GetResourceAsync<MoveAilment>(1);
@@ -412,8 +442,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveBattleStyleResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 MoveBattleStyle moveBattleStyle = await client.GetResourceAsync<MoveBattleStyle>(1);
@@ -426,8 +457,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveCategoryResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 MoveCategory moveCategory = await client.GetResourceAsync<MoveCategory>(1);
@@ -440,8 +472,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveDamageClassResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 MoveDamageClass moveDamageClass = await client.GetResourceAsync<MoveDamageClass>(1);
@@ -454,8 +487,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveLearnMethodResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 MoveLearnMethod moveLearnMethod = await client.GetResourceAsync<MoveLearnMethod>(1);
@@ -468,8 +502,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveTargetResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 MoveTarget moveTarget = await client.GetResourceAsync<MoveTarget>(1);
@@ -482,8 +517,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetAbilityResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Ability ability = await client.GetResourceAsync<Ability>(1);
@@ -496,8 +532,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetCharacteristicResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Characteristic characteristic = await client.GetResourceAsync<Characteristic>(1);
@@ -510,8 +547,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEggGroupResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 EggGroup eggGroup = await client.GetResourceAsync<EggGroup>(1);
@@ -524,8 +562,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetGenderResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Gender gender = await client.GetResourceAsync<Gender>(1);
@@ -538,8 +577,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetGrowthRateResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 GrowthRate growthRate = await client.GetResourceAsync<GrowthRate>(1);
@@ -552,8 +592,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetNatureResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Nature nature = await client.GetResourceAsync<Nature>(1);
@@ -566,8 +607,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokeathlonStatResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 PokeathlonStat pokeathlonStat = await client.GetResourceAsync<PokeathlonStat>(1);
@@ -580,8 +622,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Pokemon pokemon = await client.GetResourceAsync<Pokemon>(1);
@@ -594,8 +637,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonColorResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 PokemonColor pokemonColor = await client.GetResourceAsync<PokemonColor>(1);
@@ -608,8 +652,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonFormResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 PokemonForm pokemonForm = await client.GetResourceAsync<PokemonForm>(1);
@@ -622,8 +667,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonHabitatResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 PokemonHabitat pokemonHabitat = await client.GetResourceAsync<PokemonHabitat>(1);
@@ -636,8 +682,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonShapeResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 PokemonShape pokemonShape = await client.GetResourceAsync<PokemonShape>(1);
@@ -650,8 +697,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonSpeciesResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 PokemonSpecies pokemonSpecies = await client.GetResourceAsync<PokemonSpecies>(1);
@@ -664,8 +712,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonSpeciesResolveAllAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
                 PokemonSpecies pokemonSpecies = await client.GetResourceAsync<PokemonSpecies>(1);
 
                 // act
@@ -679,8 +728,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetStatResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Stat stat = await client.GetResourceAsync<Stat>(1);
@@ -693,8 +743,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetTypeResourceAsyncIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 Models.Type type = await client.GetResourceAsync<Models.Type>(1);
@@ -707,8 +758,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetBerryPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Berry> page = await client.GetNamedResourcePageAsync<Berry>();
@@ -721,8 +773,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetBerryFirmnessPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<BerryFirmness> page = await client.GetNamedResourcePageAsync<BerryFirmness>();
@@ -735,8 +788,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetBerryFlavorPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<BerryFlavor> page = await client.GetNamedResourcePageAsync<BerryFlavor>();
@@ -749,8 +803,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetLanguagePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Language> page = await client.GetNamedResourcePageAsync<Language>();
@@ -763,8 +818,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetContestTypePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<ContestType> page = await client.GetNamedResourcePageAsync<ContestType>();
@@ -777,8 +833,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetContestEffectPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ApiResourceList<ContestEffect> page = await client.GetApiResourcePageAsync<ContestEffect>();
@@ -791,8 +848,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetSuperContestEffectPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ApiResourceList<SuperContestEffect> page = await client.GetApiResourcePageAsync<SuperContestEffect>();
@@ -805,8 +863,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEncounterMethodPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<EncounterMethod> page = await client.GetNamedResourcePageAsync<EncounterMethod>();
@@ -819,8 +878,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEncounterConditionPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<EncounterCondition> page = await client.GetNamedResourcePageAsync<EncounterCondition>();
@@ -833,8 +893,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEncounterConditionValuePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<EncounterConditionValue> page = await client.GetNamedResourcePageAsync<EncounterConditionValue>();
@@ -847,8 +908,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEvolutionChainPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ApiResourceList<EvolutionChain> page = await client.GetApiResourcePageAsync<EvolutionChain>();
@@ -861,8 +923,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEvolutionTriggerPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<EvolutionTrigger> page = await client.GetNamedResourcePageAsync<EvolutionTrigger>();
@@ -875,8 +938,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetGenerationPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Generation> page = await client.GetNamedResourcePageAsync<Generation>();
@@ -889,8 +953,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokedexPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Pokedex> page = await client.GetNamedResourcePageAsync<Pokedex>();
@@ -903,8 +968,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetVersionPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Models.Version> page = await client.GetNamedResourcePageAsync<Models.Version>();
@@ -917,8 +983,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetVersionGroupPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<VersionGroup> page = await client.GetNamedResourcePageAsync<VersionGroup>();
@@ -931,8 +998,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Item> page = await client.GetNamedResourcePageAsync<Item>();
@@ -945,8 +1013,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemAttributePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<ItemAttribute> page = await client.GetNamedResourcePageAsync<ItemAttribute>();
@@ -959,8 +1028,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemCategoryPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<ItemCategory> page = await client.GetNamedResourcePageAsync<ItemCategory>();
@@ -973,8 +1043,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemFlingEffectPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<ItemFlingEffect> page = await client.GetNamedResourcePageAsync<ItemFlingEffect>();
@@ -987,8 +1058,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetItemPocketPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<ItemPocket> page = await client.GetNamedResourcePageAsync<ItemPocket>();
@@ -1001,8 +1073,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetLocationPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Location> page = await client.GetNamedResourcePageAsync<Location>();
@@ -1015,8 +1088,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetLocationAreaPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<LocationArea> page = await client.GetNamedResourcePageAsync<LocationArea>();
@@ -1029,8 +1103,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPalParkAreaPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<PalParkArea> page = await client.GetNamedResourcePageAsync<PalParkArea>();
@@ -1043,8 +1118,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetRegionPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Region> page = await client.GetNamedResourcePageAsync<Region>();
@@ -1057,8 +1133,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMachinePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ApiResourceList<Machine> page = await client.GetApiResourcePageAsync<Machine>();
@@ -1071,8 +1148,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMovePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Move> page = await client.GetNamedResourcePageAsync<Move>();
@@ -1085,8 +1163,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveAilmentPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<MoveAilment> page = await client.GetNamedResourcePageAsync<MoveAilment>();
@@ -1099,8 +1178,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveBattleStylePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<MoveBattleStyle> page = await client.GetNamedResourcePageAsync<MoveBattleStyle>();
@@ -1113,8 +1193,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveCategoryPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<MoveCategory> page = await client.GetNamedResourcePageAsync<MoveCategory>();
@@ -1127,8 +1208,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveDamageClassPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<MoveDamageClass> page = await client.GetNamedResourcePageAsync<MoveDamageClass>();
@@ -1141,8 +1223,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveLearnMethodPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<MoveLearnMethod> page = await client.GetNamedResourcePageAsync<MoveLearnMethod>();
@@ -1155,8 +1238,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetMoveTargetPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<MoveTarget> page = await client.GetNamedResourcePageAsync<MoveTarget>();
@@ -1169,8 +1253,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetAbilityPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Ability> page = await client.GetNamedResourcePageAsync<Ability>();
@@ -1183,8 +1268,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetCharacteristicPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 ApiResourceList<Characteristic> page = await client.GetApiResourcePageAsync<Characteristic>();
@@ -1197,8 +1283,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetEggGroupPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<EggGroup> page = await client.GetNamedResourcePageAsync<EggGroup>();
@@ -1211,8 +1298,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetGenderPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Gender> page = await client.GetNamedResourcePageAsync<Gender>();
@@ -1225,8 +1313,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetGrowthRatePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<GrowthRate> page = await client.GetNamedResourcePageAsync<GrowthRate>();
@@ -1239,8 +1328,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetNaturePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Nature> page = await client.GetNamedResourcePageAsync<Nature>();
@@ -1253,8 +1343,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokeathlonStatPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<PokeathlonStat> page = await client.GetNamedResourcePageAsync<PokeathlonStat>();
@@ -1267,8 +1358,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Pokemon> page = await client.GetNamedResourcePageAsync<Pokemon>();
@@ -1281,8 +1373,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonColorPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<PokemonColor> page = await client.GetNamedResourcePageAsync<PokemonColor>();
@@ -1295,8 +1388,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonFormPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<PokemonForm> page = await client.GetNamedResourcePageAsync<PokemonForm>();
@@ -1309,8 +1403,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonHabitatPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<PokemonHabitat> page = await client.GetNamedResourcePageAsync<PokemonHabitat>();
@@ -1323,8 +1418,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonShapePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<PokemonShape> page = await client.GetNamedResourcePageAsync<PokemonShape>();
@@ -1337,8 +1433,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetPokemonSpeciesPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<PokemonSpecies> page = await client.GetNamedResourcePageAsync<PokemonSpecies>();
@@ -1351,8 +1448,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetStatPagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Stat> page = await client.GetNamedResourcePageAsync<Stat>();
@@ -1365,8 +1463,9 @@ namespace Pokemon_Api.Test
             [Trait("Category", "Integration")]
             public async Task GetTypePagedResourceIntegrationTest()
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                PokeApiClient client = new PokeApiClient();
+                PokeApiClient client = new PokeApiClient(logger);
 
                 // act
                 NamedApiResourceList<Models.Type> page = await client.GetNamedResourcePageAsync<Models.Type>();
@@ -1416,8 +1515,10 @@ namespace Pokemon_Api.Test
             [InlineData(10012, 4, 8, 2)]
             public static async Task GetPastTypesTest_HasPastTypes(int pokemonID, int generation, int type, int slot)
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                using (var client = new PokeApiClient())
+
+                using (var client = new PokeApiClient(logger))
                 {
                     // act
                     var pokemon = await client.GetResourceAsync<Pokemon>(pokemonID);
@@ -1453,8 +1554,9 @@ namespace Pokemon_Api.Test
             [InlineData(3)]
             public static async Task GetPastTypesTest_NoPastTypes(int pokemonID)
             {
+                var logger = Mock.Of<ILogger>();
                 // assemble
-                using (var client = new PokeApiClient())
+                using (var client = new PokeApiClient(logger))
                 {
                     // act
                     var pokemon = await client.GetResourceAsync<Pokemon>(pokemonID);

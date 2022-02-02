@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Pokemon_Api.Interface;
 using Pokemon_Api.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,7 @@ namespace Pokemon_Api
     /// <summary>
     /// Gets data from the PokeAPI service
     /// </summary>
-    public class PokeApiClient : IDisposable
+    public class PokeApiClient : IDisposable, IPokeApiClient
     {
         /// <summary>
         /// The default `User-Agent` header value used by instances of <see cref="PokeApiClient"/>.
@@ -22,65 +24,56 @@ namespace Pokemon_Api
         public static readonly ProductHeaderValue DefaultUserAgent = GetDefaultUserAgent();
         private readonly HttpClient _client;
         private readonly Uri _baseUri = new Uri("https://pokeapi.co/api/v2/");
-       
+        readonly ILogger _logger;
 
         /// <summary>
         /// Default constructor
         /// </summary>
-        public PokeApiClient() : this(DefaultUserAgent) {}
+        public PokeApiClient(ILogger logger) : this(logger, DefaultUserAgent) {}
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PokeApiClient"/> with 
-        /// a given value for the `User-Agent` header
-        /// </summary>
-        /// <param name="userAgent">The value for the default `User-Agent` header.</param>
-        public PokeApiClient(ProductHeaderValue userAgent)
-        {
-            if (userAgent == null)
-            {
-                throw new ArgumentNullException(nameof(userAgent));
-            }
-
-            _client = new HttpClient() { BaseAddress = _baseUri };
-            _client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(userAgent));
-        }
 
         /// <summary>
         /// Constructor with message handler
         /// </summary>
         /// <param name="messageHandler">Message handler implementation</param>
-        public PokeApiClient(HttpMessageHandler messageHandler)
-            : this(messageHandler, DefaultUserAgent)
-        {  }
+        public PokeApiClient(HttpMessageHandler messageHandler, ILogger logger)
+            : this(messageHandler, DefaultUserAgent, logger)
+        { }
 
         /// <summary>
         /// Constructor with message handler and `User-Agent` header value
         /// </summary>
         /// <param name="messageHandler">Message handler implementation</param>
         /// <param name="userAgent">The value for the default `User-Agent` header.</param>
-        public PokeApiClient(HttpMessageHandler messageHandler, ProductHeaderValue userAgent)
+        public PokeApiClient(HttpMessageHandler messageHandler, ProductHeaderValue userAgent, ILogger logger)
         {
             if (userAgent == null)
             {
                 throw new ArgumentNullException(nameof(userAgent));
             }
-
+            _logger = logger;
             _client = new HttpClient(messageHandler) { BaseAddress = _baseUri };
             _client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(userAgent));
         }
 
         /// <summary>
-        /// Construct accepting directly a HttpClient. Useful when used in projects where
-        /// IHttpClientFactory is used to create and configure HttpClient instances with different policies.
-        /// See https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
+        /// Initializes a new instance of the <see cref="PokeApiClient"/> with 
+        /// a given value for the `User-Agent` header
         /// </summary>
-        /// <param name="httpClient">HttpClient implementation</param>
-        public PokeApiClient(HttpClient httpClient)
+        /// <param name="userAgent">The value for the default `User-Agent` header.</param>
+        public PokeApiClient(ILogger logger,ProductHeaderValue userAgent)
         {
-            _client = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-            _client.BaseAddress = _baseUri;
+            if (userAgent == null)
+            {
+                throw new ArgumentNullException(nameof(userAgent));
+            }
+            _logger = logger;
+            _client = new HttpClient() { BaseAddress = _baseUri };
+            _client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(userAgent));
         }
 
+        
+        
         /// <summary>
         /// Close resources
         /// </summary>
@@ -106,6 +99,7 @@ namespace Pokemon_Api
         private async Task<T> GetResourcesWithParamsAsync<T>(string apiParam, CancellationToken cancellationToken)
             where T : ResourceBase
         {
+           
             // lowercase the resource name as the API doesn't recognize upper case and lower case as the same
             string sanitizedApiParam = apiParam.ToLowerInvariant();
             string apiEndpoint = GetApiEndpointString<T>();
@@ -150,6 +144,7 @@ namespace Pokemon_Api
         /// <returns>The object of the resource</returns>
         public async Task<T> GetResourceAsync<T>(int id) where T : ResourceBase
         {
+            _logger.LogInformation("Starting GetResourceAsync for {0} param {1}", typeof(T).ToString(), id);
             return await GetResourceAsync<T>(id, CancellationToken.None);
         }
 
@@ -163,7 +158,7 @@ namespace Pokemon_Api
         public async Task<T> GetResourceAsync<T>(int id, CancellationToken cancellationToken)
             where T : ResourceBase
         {
-            
+            _logger.LogInformation("Starting GetResourceAsync with CancellationToken for {0} param {1}", typeof(T).ToString(), id);
             T    resource = await GetResourcesWithParamsAsync<T>(id.ToString(), cancellationToken);
             
 
@@ -180,6 +175,7 @@ namespace Pokemon_Api
         public async Task<T> GetResourceAsync<T>(string name)
             where T : NamedApiResource
         {
+            _logger.LogInformation("Starting GetResourceAsync for {0} param {1}", typeof(T).ToString(), name);
             return await GetResourceAsync<T>(name, CancellationToken.None);
         }
 
@@ -194,6 +190,7 @@ namespace Pokemon_Api
         public async Task<T> GetResourceAsync<T>(string name, CancellationToken cancellationToken)
             where T : NamedApiResource
         {
+            _logger.LogInformation("Starting GetResourceAsync with CancellationToken for {0} param {1}", typeof(T).ToString(), name);
             string sanitizedName = name
                 .Replace(" ", "-")      // no resource can have a space in the name; API uses -'s in their place
                 .Replace("'", "")       // looking at you, Farfetch'd
@@ -216,6 +213,7 @@ namespace Pokemon_Api
         public async Task<List<T>> GetResourceAsync<T>(IEnumerable<UrlNavigation<T>> collection)
             where T : ResourceBase
         {
+            _logger.LogInformation("Starting GetResourceAsync with CancellationToken for {0} ", typeof(T).ToString());
             return await GetResourceAsync<T>(collection, CancellationToken.None);
         }
 
@@ -229,6 +227,7 @@ namespace Pokemon_Api
         public async Task<List<T>> GetResourceAsync<T>(IEnumerable<UrlNavigation<T>> collection, CancellationToken cancellationToken)
             where T : ResourceBase
         {
+            _logger.LogInformation("Starting GetResourceAsync for {0}", typeof(T).ToString());
             return (await Task.WhenAll(collection.Select(m => GetResourceAsync(m, cancellationToken)))).ToList();
         }
 
@@ -241,6 +240,7 @@ namespace Pokemon_Api
         public async Task<T> GetResourceAsync<T>(UrlNavigation<T> urlResource)
             where T : ResourceBase
         {
+            _logger.LogInformation("Starting GetResourceAsync for {0}", typeof(T).ToString());
             return await GetResourceByUrlAsync<T>(urlResource.Url, CancellationToken.None);
         }
 
@@ -266,11 +266,12 @@ namespace Pokemon_Api
         /// <typeparam name="T">The type of resource</typeparam>
         /// <param name="cancellationToken">Cancellation token for the request; not utilitized if data has been cached</param>
         /// <returns>The paged resource object</returns>
-        public Task<NamedApiResourceList<T>> GetNamedResourcePageAsync<T>(CancellationToken cancellationToken = default)
+        public Task<NamedApiResourceList<T>> GetNamedResourcePageAsync<T>(int? limit =null,int? offset=null, CancellationToken cancellationToken = default)
             where T : NamedApiResource
         {
+            _logger.LogInformation("Starting GetNamedResourcePageAsync for {0} param limit {1}, offset {2}", typeof(T).ToString(), limit, offset);
             string url = GetApiEndpointString<T>();
-            return InternalGetNamedResourcePageAsync<T>(AddPaginationParamsToUrl(url), cancellationToken);
+            return InternalGetNamedResourcePageAsync<T>(AddPaginationParamsToUrl(url, limit, offset), cancellationToken);
         }
 
         /// <summary>
@@ -284,13 +285,16 @@ namespace Pokemon_Api
         public Task<NamedApiResourceList<T>> GetNamedResourcePageAsync<T>(int limit, int offset, CancellationToken cancellationToken = default)
             where T : NamedApiResource
         {
+            _logger.LogInformation("Starting GetNamedResourcePageAsync for {0} param limit {1}, offset {2}", typeof(T).ToString(), limit, offset);
+
             string url = GetApiEndpointString<T>();
-            return InternalGetNamedResourcePageAsync<T>(AddPaginationParamsToUrl(url, limit, offset), cancellationToken);
+                return InternalGetNamedResourcePageAsync<T>(AddPaginationParamsToUrl(url, limit, offset), cancellationToken);
         }
 
         private async Task<NamedApiResourceList<T>> InternalGetNamedResourcePageAsync<T>(string url, CancellationToken cancellationToken)
             where T : NamedApiResource
         {
+
             var resources = await GetAsync<NamedApiResourceList<T>>(url, cancellationToken);
                 
 
@@ -306,6 +310,8 @@ namespace Pokemon_Api
         public Task<ApiResourceList<T>> GetApiResourcePageAsync<T>(CancellationToken cancellationToken = default)
             where T : ApiResource
         {
+            _logger.LogInformation("Starting GetApiResourcePageAsync for {0} ", typeof(T).ToString());
+
             string url = GetApiEndpointString<T>();
             return InternalGetApiResourcePageAsync<T>(AddPaginationParamsToUrl(url), cancellationToken);
         }
@@ -321,6 +327,8 @@ namespace Pokemon_Api
         public Task<ApiResourceList<T>> GetApiResourcePageAsync<T>(int limit, int offset, CancellationToken cancellationToken = default)
             where T : ApiResource
         {
+            _logger.LogInformation("Starting GetNamedResourcePageAsync for {0} param limit {1}, offset {2}", typeof(T).ToString(), limit, offset);
+
             string url = GetApiEndpointString<T>();
             return InternalGetApiResourcePageAsync<T>(AddPaginationParamsToUrl(url, limit, offset), cancellationToken);
         }

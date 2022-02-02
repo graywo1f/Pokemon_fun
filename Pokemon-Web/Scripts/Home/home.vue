@@ -19,8 +19,9 @@
                     </thead>
                     <tbody>
                         <tr v-for="pokemon in Pokemons">
-                            <td>
+                            <td> <a v-bind:href="'/Home/Details/'+pokemon.id">
                                 {{pokemon.name}}
+                                </a>
                             </td>                           
                         </tr>
                     </tbody>
@@ -88,9 +89,9 @@
                 axios.get('/API/Pokemon')
                     .then(response => {
 
-                        this.Pokemons = response.data.results;
+                        this.Pokemons = response.data.responce.results;
                         //this.allPages = response.data.table.totalPages;
-                        this.totalItems = response.data.count;
+                        this.totalItems = response.data.responce.count;
                         //this.currentPage = response.data.table.currentPage;
 
                         this.loading = false;

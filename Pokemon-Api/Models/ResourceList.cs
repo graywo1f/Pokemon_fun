@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Pokemon_Api.Common;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Pokemon_Api.Models
 {
@@ -17,10 +19,27 @@ namespace Pokemon_Api.Models
         /// </summary>
         public string Next { get; set; }
 
+        public string OffsetForNext {            
+            get
+            {
+                return RegexParser.ParseOffsetFromURL(this.Next);
+            }
+        }
+
         /// <summary>
         /// The URL for the previous page in the list.
         /// </summary>
         public string Previous { get; set; }
+
+        public string OffsetForPreview
+        {
+            get
+            {
+              return  RegexParser.ParseOffsetFromURL(this.Previous);
+            }
+        }
+
+        public string Errors { get; set; }
     }
 
     /// <summary>

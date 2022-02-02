@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Pokemon_Api.Common;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Pokemon_Api.Models
 {
@@ -195,6 +197,18 @@ namespace Pokemon_Api.Models
         /// The name of the referenced resource.
         /// </summary>
         public string Name { get; set; }
+
+        public string Type { get
+            {
+                return RegexParser.ParseListTypeFromURL(this.Url);
+            } }
+
+        public string ID {
+            get
+            {
+                return RegexParser.ParseListIdFromURL(this.Url);
+            }
+        }
     }
 
     /// <summary>

@@ -4,10 +4,11 @@
         
         <div class="Pokemondetails">
 
-            <img v-bind:src="Details.sprites.frontDefault" />
-            <img v-bind:src="Details.sprites.frontShiny" />
-            <img v-bind:src="Details.sprites.backDefault" />
-            <img v-bind:src="Details.sprites.backShiny" />
+            
+            <img v-if="showimg" v-bind:src="Details.sprites.frontDefault" />
+            <img v-if="showimg" v-bind:src="Details.sprites.frontShiny" />
+            <img v-if="showimg" v-bind:src="Details.sprites.backDefault" />
+            <img v-if="showimg" v-bind:src="Details.sprites.backShiny" />
             <table class="table">
                 <thead>
                     <tr>
@@ -23,7 +24,7 @@
                 <tbody>
 
 
-                    <tr v-for="prop in DetailsColumns">
+                    <tr v-for="prop in DetailsColumns.slice(0, 5)">
                         <td>
                             {{prop}}
                         </td>
@@ -48,8 +49,8 @@
      data() {
             return {
                 Details: [],
-               DetailsColumns:[],
-               
+                DetailsColumns: [],
+                showimg: false,
 
             }
         },
@@ -69,9 +70,9 @@
                 axios.get('/API/details/' + this.pokemon)
                     .then(response => {
 
-                        this.Details = response.data;
-                        this.DetailsColumns = Object.keys(response.data);
-                   
+                        this.Details = response.data.responce;
+                        this.DetailsColumns = Object.keys(response.data.responce);
+                        this.showimg = true;
                     })
             }
         },

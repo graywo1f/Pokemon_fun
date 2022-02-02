@@ -13587,6 +13587,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -13637,9 +13638,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/API/Pokemon')
                 .then(response => {
 
-                    this.Pokemons = response.data.results;
+                    this.Pokemons = response.data.responce.results;
                     //this.allPages = response.data.table.totalPages;
-                    this.totalItems = response.data.count;
+                    this.totalItems = response.data.responce.count;
                     //this.currentPage = response.data.table.currentPage;
 
                     this.loading = false;
@@ -14474,7 +14475,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('table', {
     staticClass: "table contactsTable"
   }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.Pokemons), function(pokemon) {
-    return _c('tr', [_c('td', [_vm._v("\n                            " + _vm._s(pokemon.name) + "\n                        ")])])
+    return _c('tr', [_c('td', [_c('a', {
+      attrs: {
+        "href": '/Home/Details/' + pokemon.id
+      }
+    }, [_vm._v("\n                            " + _vm._s(pokemon.name) + "\n                            ")])])])
   }), 0)])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('thead', [_c('tr', [_c('th', [_vm._v("\n                           Name\n                        ")]), _vm._v(" "), _c('th', [_vm._v("\n                          Operation\n                        ")])])])
@@ -14580,6 +14585,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -14588,8 +14594,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
  data() {
         return {
             Details: [],
-           DetailsColumns:[],
-           
+            DetailsColumns: [],
+            showimg: false,
 
         }
     },
@@ -14609,9 +14615,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/API/details/' + this.pokemon)
                 .then(response => {
 
-                    this.Details = response.data;
-                    this.DetailsColumns = Object.keys(response.data);
-               
+                    this.Details = response.data.responce;
+                    this.DetailsColumns = Object.keys(response.data.responce);
+                    this.showimg = true;
                 })
         }
     },
@@ -14638,25 +14644,25 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('h1', [_vm._v("  " + _vm._s(_vm.Details.Name))]), _vm._v(" "), _c('div', {
     staticClass: "Pokemondetails"
-  }, [_c('img', {
+  }, [(_vm.showimg) ? _c('img', {
     attrs: {
       "src": _vm.Details.sprites.frontDefault
     }
-  }), _vm._v(" "), _c('img', {
+  }) : _vm._e(), _vm._v(" "), (_vm.showimg) ? _c('img', {
     attrs: {
       "src": _vm.Details.sprites.frontShiny
     }
-  }), _vm._v(" "), _c('img', {
+  }) : _vm._e(), _vm._v(" "), (_vm.showimg) ? _c('img', {
     attrs: {
       "src": _vm.Details.sprites.backDefault
     }
-  }), _vm._v(" "), _c('img', {
+  }) : _vm._e(), _vm._v(" "), (_vm.showimg) ? _c('img', {
     attrs: {
       "src": _vm.Details.sprites.backShiny
     }
-  }), _vm._v(" "), _c('table', {
+  }) : _vm._e(), _vm._v(" "), _c('table', {
     staticClass: "table"
-  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.DetailsColumns), function(prop) {
+  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.DetailsColumns.slice(0, 5)), function(prop) {
     return _c('tr', [_c('td', [_vm._v("\n                        " + _vm._s(prop) + "\n                    ")]), _vm._v(" "), _c('td', [_vm._v("\n                        " + _vm._s(_vm.Details[prop]) + "\n                    ")])])
   }), 0)])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
