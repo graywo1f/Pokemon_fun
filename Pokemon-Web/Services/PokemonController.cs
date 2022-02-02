@@ -29,7 +29,7 @@ namespace Pokemon_Web.Controllers
         {
             PokeApiClient client = new PokeApiClient();
 
-            // act
+            
             var results = client.GetResourceAsync<Pokemon>(id).Result;
 
             return Json(results);

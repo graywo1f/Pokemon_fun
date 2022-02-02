@@ -1,4 +1,3 @@
-using PokeApiNet;
 using Pokemon_Api.Models;
 using System;
 using System.Collections.Generic;
